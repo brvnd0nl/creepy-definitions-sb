@@ -24,15 +24,7 @@
     .formulario{
         grid-template-columns: 4fr 1fr;
         align-items: flex-start;
-    }
-
-    .textbox{
-        width: 100%;
-    }
-
-    .submitButton{
-        margin: 0rem !important;
-    }
+    }        
 }
 
 .textbox{    
@@ -42,6 +34,12 @@
     border: .5px solid #efefef;    
     border-radius: .5rem;
     color: var(--blanco);    
+}
+
+@media(min-width:768px){
+    .textbox{
+        width: 100%;
+    }
 }
 
 .submitButton{        
@@ -54,11 +52,21 @@
     text-transform: uppercase;
     font-size: 2rem;
     font-weight: 900;
-    margin: 2rem;
+    margin: auto auto;
     color: var(--primary);
     border: 2px solid #efefef;
+    width: 40%;
     /* border-radius: .5rem; */
-    padding: 1rem 5rem;
+    padding: 1rem 2rem;
     transition-property: background-color;
     transition-duration: .3s;
+}
+
+@media(min-width:768px){
+    .submitButton{
+        margin: 0rem !important;
+        padding: 1rem 5rem;
+        margin: 2rem;
+        width: 60%;
+    }
 }

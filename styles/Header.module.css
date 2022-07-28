@@ -36,8 +36,7 @@
 
 .navegacion{
     /*margin-top: 5rem;*/
-    display: flex;
-    gap: 2rem;
+    display: flex;    
     position: relative;
     z-index: 1;
 }
@@ -45,6 +44,7 @@
 @media(min-width:768px){
     .navegacion{
         margin-top: 0;
+        gap: 2rem;
     }
 }
 
