@@ -14,19 +14,35 @@ export const useSupabaseContext = () => {
 export const SupabaseContextProvider = ({children}) => {
 
     const [dictionaryArray, setDictionaryArray] = useState([]);
+    const [useWiki, setUseWiki] = useState(false);
 
     const getDictonaryArray = async (word) => {
+
+        const dictionary = dictionaryArray;
+
         const {error, data} = await supabase.from('dictionary').select().ilike('title', `%${word}%`);
 
         if(error) throw new Error(error);
 
-        setDictionaryArray(data);
-        await getResponseWikipedia(word);
+        data.forEach(itemSB => {
+
+            dictionary = dictionary.filter((item) => item.id !== itemSB.id);
+
+            dictionary.push(itemSB);
+
+            if(dictionary.length > 3) dictionary.splice(0, 1);
+        });
+
+        setDictionaryArray(dictionary);
+
+        if(useWiki) await getResponseWikipedia(word);
     };
 
     const getResponseWikipedia = async (word) => {
 
-        const {pages} = await fetch(`https://es.wikipedia.org/w/api.php?format=json&action=query&generator=search&gsrnamespace=0&gsrlimit=5&prop=extracts|pageimages&pithumbsize=400&origin=*&exintro&explaintext&exsentences=1&exlimit=max&gsrsearch='${word}'`, {
+        const LIMIT_WIKI_RESULTS = 2;
+
+        const {pages} = await fetch(`https://es.wikipedia.org/w/api.php?format=json&action=query&generator=search&gsrnamespace=0&gsrlimit=${LIMIT_WIKI_RESULTS}&prop=extracts|pageimages&pithumbsize=400&origin=*&exintro&explaintext&exsentences=1&exlimit=max&gsrsearch='${word}'`, {
             method: 'GET',
             headers: {
                 accept: 'application/json',
@@ -35,7 +51,7 @@ export const SupabaseContextProvider = ({children}) => {
         .then(response => response.json())
         .then(data => data.query);        
 
-        const arrayDictionary = dictionaryArray;
+        const dictionary = dictionaryArray;
 
         for (var i in pages) {
 
@@ -46,10 +62,14 @@ export const SupabaseContextProvider = ({children}) => {
                 userId: "",
             };
 
-            arrayDictionary = [...arrayDictionary, newData];            
+            dictionary = dictionary.filter((item) => item.title !== newData.title);            
+
+            dictionary = [...dictionary, newData];            
+
+            if(dictionary.length > 3) dictionary.splice(0, 1);
         }
         
-        setDictionaryArray(arrayDictionary);
+        setDictionaryArray(dictionary);
 
     }
 

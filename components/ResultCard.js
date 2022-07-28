@@ -21,7 +21,7 @@ const ResultCard = ({item}) => {
                     </a>
                 </div>
                 <div>
-                    <p className='text-justify'>
+                    <p className='text-justify fs-4'>
                         {item.description}
                     </p>
                 </div>

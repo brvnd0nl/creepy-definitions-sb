@@ -7,20 +7,13 @@
     .main{
         grid-template-columns: 3fr 2fr;
         align-items: flex-start;
-    }
-
-    .side_a_fem{
-        height: 100vh;
-    }
-    
-    .side_a_man{
-        height: 100vh;
-    }
+    }    
 }
 
 .side_a_fem{
     position: relative;
     display: block;    
+    height: 50%;
     background: rgb(255,105,180);
     background: -moz-linear-gradient(180deg, rgba(255,105,180,1) 56%, rgba(255,168,217,1) 100%);
     background: -webkit-linear-gradient(180deg, rgba(255,105,180,1) 56%, rgba(255,168,217,1) 100%);
@@ -31,6 +24,7 @@
 .side_a_man{
     position: relative;
     display: block;
+    height: 40vh;
     background: rgb(38,82,140);
     background: -moz-linear-gradient(180deg, rgba(38,82,140,1) 56%, rgba(63,118,166,1) 100%);
     background: -webkit-linear-gradient(180deg, rgba(38,82,140,1) 56%, rgba(63,118,166,1) 100%);
@@ -38,10 +32,26 @@
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#26528c",endColorstr="#3f76a6",GradientType=1);
 }
 
+@media(min-width:768px){
+    .side_a_fem{
+        height: 100vh;
+    }
+    
+    .side_a_man{
+        height: 100vh;
+    }
+}
+
 .side_a h4{
     color: var(--blanco);
 }
 
 .side_b{
-    margin-top: 20%;
+    margin-top: 1rem;
+}
+
+@media(min-width:768px){
+    .side_b{
+        margin-top: 20%;
+    }
 }

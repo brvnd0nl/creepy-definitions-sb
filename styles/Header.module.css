@@ -1,9 +1,18 @@
-.headerIndex{
-    padding:  5rem 0;
-    position: absolute;
+.headerIndex{    
+    padding:  2rem 0;
+    position: relative;
     z-index: 10;
-    top: 0;
-    right: 10%;
+    background: rgb(38,82,140);    
+}
+
+@media(min-width:768px){
+    .headerIndex{      
+        padding:  5rem 0;
+        position: absolute; 
+        top: 0;
+        right: 10%;
+        background: transparent;
+    }
 }
 
 .header{
@@ -15,7 +24,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    display: none;
 }
 
 @media(min-width:768px){
@@ -27,7 +35,7 @@
 }
 
 .navegacion{
-    margin-top: 5rem;
+    /*margin-top: 5rem;*/
     display: flex;
     gap: 2rem;
     position: relative;
@@ -41,7 +49,7 @@
 }
 
 .navegacion a{
-    color: var(--negro);
+    color: var(--blanco);
     width: max-content;
     text-decoration: none;
     font-size:  1.4rem;
@@ -51,14 +59,27 @@
     border-radius: .5rem;
     transition-property: background-color;
     transition-duration: .3s;
+    background-color: var(--primary-man);
 }
 
 .navegacion a:hover{
-    background-color: #efefef;
+    background-color: var(--secondary-man);
     /* color: var(--blanco); */
     transition-property: background-color;
     transition-duration: .3s;
+    
+}
 
+@media(min-width:768px){
+    .navegacion a{
+        color: var(--negro);
+        background-color: transparent;
+    }
+    
+    .navegacion a:hover{
+        color: var(--negro);
+        background-color: #efefef;
+    }
 }
 
 .btnRegister_fem{
@@ -67,7 +88,7 @@
     padding: 2rem;
     font-size:  1.4rem;
     font-weight: 700;
-    background-color: var(--primary-fem);
+    background-color: var(--primary-fem) !important;
     color: #efefef !important;
     text-transform: uppercase;
 
@@ -79,7 +100,7 @@
     padding: 2rem;
     font-size:  1.4rem;
     font-weight: 700;
-    background-color: var(--primary-man);
+    background-color: var(--primary-man) !important;
     color: #efefef !important;
     text-transform: uppercase;
 
