@@ -15,8 +15,6 @@ const SearchForm = () => {
         }
 
         getDictonaryArray(word);
-
-        console.log(word);
     }
 
     return (
