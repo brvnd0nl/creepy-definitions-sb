@@ -32,7 +32,7 @@ const Header = ({pagina}) => {
                             ) : (
                                 <>
                                     <Link href="/login">
-                                        Inicio Sesión                                        
+                                        <a className='font-italic'>Inicio Sesión</a>                                        
                                     </Link>
                                     <Link href="/register">
                                         <a className={styles.btnRegister_man}>
