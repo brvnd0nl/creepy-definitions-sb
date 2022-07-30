@@ -10,9 +10,10 @@ import styles from "../styles/Index.module.css";
 
 export default function Home() {
 
-  const {dictionaryArray, setUser} = useSupabaseContext();
+  const {dictionaryArray, setUser, setTitlePage} = useSupabaseContext();
 
   useEffect(() => {
+    setTitlePage("");
     setUser(supabase.auth.user());  
   }, []);
   

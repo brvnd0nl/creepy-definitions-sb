@@ -4,20 +4,30 @@ import {GoogleLoginButton} from 'react-social-login-buttons';
 import { supabase } from "../supabase/client";
 import {useSupabaseContext} from '../context/SupabaseContext';
 import {useRouter} from 'next/router';
+import Head from "../components/Head";
 import styles from '../styles/Login.module.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   
-  const {user, setUser} = useSupabaseContext();
+  const {user, setUser, setTitlePage} = useSupabaseContext();
   const router = useRouter();
 
   useEffect(() => {
+    setTitlePage("Inicio de Sesión");
+
     if(user){
       router.push("/");
     }
   },[]);
+
+  const handleBack = () => {
+    router.back();
+  }
 
   const handleGoogleLogin = async (provider) => {
     const { error } = await supabase.auth.signIn({
@@ -49,11 +59,17 @@ const Login = () => {
 
   return (
     <>
+      <Head titulo="Inicio Sesión" />
       <style global jsx>
         {`
           body{
             font-family: 'Roboto', sans-serif;
           }
+
+          .googleBtn{
+            height: 40% !important;
+          }
+
         `}
       </style>
       <div className={`container-fluid ${styles.container}`}>
@@ -61,7 +77,10 @@ const Login = () => {
           <div className="row pt-5 justify-content-center align-items-center">
             <div className="col-md-5">
               <form onSubmit={async (e) => handleSubmit(e)} className={`card card-body ${styles.formulario} justify-content-between p-5`}>
-                <div className="py-2">
+                <div className="d-flex w-50 justify-content-between py-4">
+                  <a className={styles.backBtn} onClick={() => handleBack()} title="Cerrar Sesión">
+                    <FontAwesomeIcon color='#fffff' icon={faArrowLeft} size="1x" fixedWidth />
+                  </a>
                   <h2 className="fw-bold text-center">Login</h2>
                 </div>
                 <div className="form-floating mb-3">
@@ -90,8 +109,8 @@ const Login = () => {
                   <button className="btn btn-secondary btn-lg">Iniciar Sesion</button>
                 </div>
                 <div className="d-flex flex-column align-items-center justify-content-center py-3">
-                  <div className="w-50">
-                    <GoogleLoginButton size="30px" className={styles.googleBtn} onClick={async () => handleGoogleLogin("google")} />
+                  <div className={styles.containerProviderButtons}>
+                    <GoogleLoginButton className="googleBtn" onClick={async () => handleGoogleLogin("google")} />
                     {/* <FacebookLoginButton size="30px" /> */}
                   </div>
                 </div>

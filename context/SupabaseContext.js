@@ -20,17 +20,18 @@ export const useSupabaseContext = () => {
 
 export const SupabaseContextProvider = ({ children }) => {
   const [dictionaryArray, setDictionaryArray] = useState([]);
+  const [titlePage, setTitlePage] = useState("");
   const [useWiki, setUseWiki] = useState(false);
   const [gender, setGender] = useState("M");
   const [darkMode, setDarkMode] = useState(false);
   const [user, setUser] = useState(null);
 
-  const changeDarkMode = () => {
-    setDarkMode(!darkMode);
+  const changeDarkMode = (newValue) => {
+    setDarkMode(newValue);
   };
 
-  const changeUseWiki = () => {
-    setUseWiki(!useWiki);
+  const changeUseWiki = (newValue) => {
+    setUseWiki(newValue);
   };
 
   const setNewGender = (newGender) => {
@@ -105,11 +106,14 @@ export const SupabaseContextProvider = ({ children }) => {
         gender,
         darkMode,
         user,
+        titlePage,
         getDictonaryArray,
         clearSearchResult,
         changeDarkMode,
+        changeUseWiki,
         setNewGender,
-        setUser
+        setUser,
+        setTitlePage
       }}
     >
       {children}

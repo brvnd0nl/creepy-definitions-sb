@@ -2,10 +2,15 @@
   border: none;
 }
 
-.googleBtn{
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+.containerProviderButtons{
+  width: 100%;
 }
 
+@media(min-width:768px){
+  .containerProviderButtons{
+    width: 50%;
+  }
+}
 @media(min-width:768px){
   .container{
     background: rgb(38,82,140);
@@ -14,4 +19,14 @@
     background: linear-gradient(180deg, rgba(38,82,140,1) 56%, rgba(63,118,166,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#26528c",endColorstr="#3f76a6",GradientType=1);
   }
+}
+
+.backBtn{
+  color: var(--negro);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.backBtn:hover{
+  color: #0f0f0f;
 }
