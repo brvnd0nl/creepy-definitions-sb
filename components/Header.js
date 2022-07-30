@@ -1,3 +1,4 @@
+import { useEffect } from 'react'; 
 import Link from 'next/link';
 import Image from 'next/image';
 import {useRouter} from 'next/router';
@@ -10,6 +11,14 @@ import { faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 const Header = ({pagina}) => {   
     
     const {user, setUser} = useSupabaseContext();
+
+    useEffect(() => {
+        supabase.auth.onAuthStateChange((event, session) => {
+            if (session) {
+                setUser(session.user);
+            }
+        });
+    },[]);
     
     const handleLogOut = async () =>{
         const { error } = await supabase.auth.signOut();        
@@ -20,7 +29,6 @@ const Header = ({pagina}) => {
     };
 
     const validateUser = () => {
-        console.log("user Header", user);
         if(user){
             return (
                 <>
