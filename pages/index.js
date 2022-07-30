@@ -1,14 +1,20 @@
+import { useEffect } from "react";
+import {supabase} from '../supabase/client.js';
+import { useSupabaseContext } from "../context/SupabaseContext";
 import Head from "next/head";
 import Image from "next/image";
 import Layout from "../components/Layout";
 import SearchForm from "../components/SearchForm";
 import SearchResult from "../components/SearchResult";
-import { useSupabaseContext } from "../context/SupabaseContext";
 import styles from "../styles/Index.module.css";
 
 export default function Home() {
 
-  const {dictionaryArray} = useSupabaseContext();
+  const {dictionaryArray, setUser} = useSupabaseContext();
+
+  useEffect(() => {
+    setUser(supabase.auth.user());  
+  }, []);
   
   return (
     <>

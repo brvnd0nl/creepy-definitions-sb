@@ -16,8 +16,19 @@
 }
 
 .header{
+    display: flex;
+    justify-content: center;
     padding:  5rem 0;
     position: relative;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .barra{
@@ -36,15 +47,19 @@
 
 .navegacion{
     /*margin-top: 5rem;*/
-    display: flex;
-    gap: 2rem;
+    display: flex;    
     position: relative;
+    width: 80%;
+    justify-content: center;
     z-index: 1;
 }
 
 @media(min-width:768px){
     .navegacion{
         margin-top: 0;
+        gap: 2rem;
+        width: auto;
+        justify-content: space-between;
     }
 }
 
@@ -88,7 +103,7 @@
     padding: 2rem;
     font-size:  1.4rem;
     font-weight: 700;
-    background-color: var(--primary-fem) !important;
+    background-color: transparent !important;
     color: #efefef !important;
     text-transform: uppercase;
 
@@ -100,7 +115,7 @@
     padding: 2rem;
     font-size:  1.4rem;
     font-weight: 700;
-    background-color: var(--primary-man) !important;
+    background-color: transparent !important;
     color: #efefef !important;
     text-transform: uppercase;
 
@@ -118,4 +133,29 @@
     background-color: var(--blanco) !important;
     color: var(--primary-man) !important;
 
+}
+
+@media(min-width:768px){
+    .btnRegister_man{
+        background-color: var(--primary-man) !important;
+    }
+    
+    .btnRegister_fem{
+        background-color: var(--primary-fem) !important;
+    }
+    
+}
+
+.iconLogOut{
+    cursor: pointer;
+}
+
+.iconLogOut svg{
+    color: var(--blanco);    
+}
+
+@media(min-width:768px){
+    .iconLogOut svg{
+        color: var(--negro);
+    }
 }
