@@ -5,11 +5,13 @@ import { useSupabaseContext } from "../context/SupabaseContext";
 import styles from "../styles/AdminPage.module.css";
 
 const AdminPage = () => {
-  const { user } = useSupabaseContext();
+  const { user, setTitlePage } = useSupabaseContext();
 
   const router = useRouter();
 
   useEffect(() => {
+    setTitlePage("Pagina de Administración")
+
       if (!user) {
           router.push("/");
       }

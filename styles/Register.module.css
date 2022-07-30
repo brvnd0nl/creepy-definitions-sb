@@ -5,6 +5,16 @@
   .googleBtn{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   }
+
+  .backBtn{
+    color: var(--negro);
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .backBtn:hover{
+    color: #0f0f0f;
+  }
   
   @media(min-width:768px){
     .container{

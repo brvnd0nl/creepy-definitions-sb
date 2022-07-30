@@ -15,13 +15,14 @@
 
 .formulario{
     display: grid;
-    gap: 4rem;
+    gap: 2rem;
     grid-template-columns: 12fr;
     align-items: center;
 }
 
 @media(min-width:768px){
     .formulario{
+        gap: 4rem;
         grid-template-columns: 4fr 1fr;
         align-items: flex-start;
     }        
@@ -68,5 +69,16 @@
         padding: 1rem 5rem;
         margin: 2rem;
         width: 60%;
+    }
+}
+
+.checkboxText{
+    color: var(--blanco);
+    font-size: 1.5rem;
+}
+
+@media(min-width:768px){
+    .checkboxText{
+        font-size: 2rem;
     }
 }
