@@ -40,10 +40,10 @@ const Login = () => {
     console.log("usuario");
     console.log(user);
 
-    /* if(user){
+    if(user){
       setUser(user);
       router.push("/");
-    } */
+    }
     
   };
 

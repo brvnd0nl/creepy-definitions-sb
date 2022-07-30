@@ -145,3 +145,17 @@
     }
     
 }
+
+.iconLogOut{
+    cursor: pointer;
+}
+
+.iconLogOut svg{
+    color: var(--blanco);    
+}
+
+@media(min-width:768px){
+    .iconLogOut svg{
+        color: var(--negro);
+    }
+}

@@ -27,7 +27,7 @@ const Header = ({pagina}) => {
                     <Link href="/admin-page">
                         Administrar
                     </Link>
-                    <a onClick={() => handleLogOut()}>
+                    <a className={styles.iconLogOut} onClick={() => handleLogOut()} title="Cerrar Sesión">
                         <FontAwesomeIcon icon={faArrowRightFromBracket} size="1x" fixedWidth />
                     </a>
                 </>
