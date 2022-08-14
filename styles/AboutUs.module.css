@@ -1,0 +1,22 @@
+.contenido{
+    width: 95%;
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 1rem;
+}
+
+.titulo{
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 600;
+}
+  
+  @media(min-width:768px){
+    .bg_Divs{
+      background: rgb(38,82,140);
+      background: -moz-linear-gradient(180deg, rgba(38,82,140,1) 56%, rgba(63,118,166,1) 100%);
+      background: -webkit-linear-gradient(180deg, rgba(38,82,140,1) 56%, rgba(63,118,166,1) 100%);
+      background: linear-gradient(180deg, rgba(38,82,140,1) 56%, rgba(63,118,166,1) 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#26528c",endColorstr="#3f76a6",GradientType=1);
+    }
+  }

@@ -1,55 +1,55 @@
-import {useState, useEffect} from 'react';
-import { supabase } from '../supabase/client';
-import { useSupabaseContext } from '../context/SupabaseContext';
-import Link from 'next/link';
-import {useRouter} from 'next/router';
-import styles from '../styles/Register.module.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { useState, useEffect } from "react";
+import { supabase } from "../supabase/client";
+import { useSupabaseContext } from "../context/SupabaseContext";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import styles from "../styles/Register.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 const Register = () => {
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
-    const {user, setUser, setTitlePage} = useSupabaseContext();
+  const { setTitlePage } = useSupabaseContext();
 
-    const router = useRouter();
+  const router = useRouter();
 
-    useEffect(() => {
-      setTitlePage("Registro");
+  useEffect(() => {
+    setTitlePage("Registro");
 
-      if(user){
-        router.push("/");
-      }
-    },[])
-
-    const handleBack = () => {
-      router.back();
+    const userSB = supabase.auth.user();
+    if (userSB) {
+      router.push("/");
     }
+  }, []);
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        if(password !== confirmPassword){
-            alert("Las contraseñas no coinciden");
-        }else{
-            const { user, session, error } = await supabase.auth.signUp({
-                email: username,
-                password: password,
-            });
+  const handleBack = () => {
+    router.back();
+  };
 
-            if (error) throw new Error(error);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (password !== confirmPassword) {
+      alert("Las contraseñas no coinciden");
+    } else {
+      const { user, session, error } = await supabase.auth.signUp({
+        email: username,
+        password: password,
+      });
 
-            console.log(user);
+      if (error) throw new Error(error);
 
-            setUser(user);
+      console.log(user);
 
+      setUser(user);
 
-            alert("Usuario creado");
+      alert("Usuario creado");
 
-            router.push("/");
-        }
+      router.push("/");
     }
+  };
 
   return (
     <>
@@ -69,8 +69,17 @@ const Register = () => {
                 className={`card card-body ${styles.formulario} justify-content-between p-5`}
               >
                 <div className="d-flex w-50 justify-content-between py-4">
-                  <a className={styles.backBtn} onClick={() => handleBack()} title="Cerrar Sesión">
-                    <FontAwesomeIcon color='#fffff' icon={faArrowLeft} size="1x" fixedWidth />
+                  <a
+                    className={styles.backBtn}
+                    onClick={() => handleBack()}
+                    title="Cerrar Sesión"
+                  >
+                    <FontAwesomeIcon
+                      color="#fffff"
+                      icon={faArrowLeft}
+                      size="1x"
+                      fixedWidth
+                    />
                   </a>
                   <h2 className="fw-bold text-center">Register</h2>
                 </div>

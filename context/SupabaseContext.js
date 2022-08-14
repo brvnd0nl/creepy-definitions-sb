@@ -41,6 +41,8 @@ export const SupabaseContextProvider = ({ children }) => {
   const getDictonaryArray = async (word) => {
     const dictionary = dictionaryArray;
 
+    word = word.trim();
+
     const { error, data } = await supabase
       .from("dictionary")
       .select()
@@ -96,7 +98,7 @@ export const SupabaseContextProvider = ({ children }) => {
 
   const clearSearchResult = (id) => {
     setDictionaryArray(dictionaryArray.filter((item) => item.id !== id));
-  };  
+  };
 
   return (
     <SupabaseContext.Provider
@@ -113,7 +115,7 @@ export const SupabaseContextProvider = ({ children }) => {
         changeUseWiki,
         setNewGender,
         setUser,
-        setTitlePage
+        setTitlePage,
       }}
     >
       {children}
