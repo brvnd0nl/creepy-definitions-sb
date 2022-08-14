@@ -64,7 +64,7 @@ const Header = ({pagina}) => {
                     <div className={styles.barra}>
                         <nav className={styles.navegacion}>
                             <Link href="/">Inicio</Link>
-                            <Link href="/nosotros">Nosotros</Link>                            
+                            <Link href="/about-us">Nosotros</Link>                            
                             {validateUser()}    
                             {/* <Link href="/blog">Blog</Link>                             */}                        
                         </nav>                    

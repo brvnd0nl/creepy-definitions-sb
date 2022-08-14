@@ -10,11 +10,11 @@ const AdminPage = () => {
   const router = useRouter();
 
   useEffect(() => {
-    setTitlePage("Pagina de Administración")
+    setTitlePage("Pagina de Administración");
 
-      if (!user) {
-          router.push("/");
-      }
+    if (!user) {
+      router.push("/");
+    }
   }, []);
 
   const [title, setTitle] = useState("");
@@ -23,19 +23,19 @@ const AdminPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!user) router.push("/");
-    const {data, error} = await supabase.from("dictionary").insert({
+    const { data, error } = await supabase.from("dictionary").insert({
       title,
       description,
       userId: user.id,
     });
 
-    if(error) throw new Error(error);
+    if (error) throw new Error(error);
 
     setTitle("");
     setDescription("");
 
-    alert('Definición agregada');
-  }
+    alert("Definición agregada");
+  };
 
   return (
     <>
@@ -75,7 +75,9 @@ const AdminPage = () => {
                     value={description}
                     style={{ height: "100px" }}
                   ></textarea>
-                  <label className="fs-6" htmlFor="floatingTextarea2">Comments</label>
+                  <label className="fs-6" htmlFor="floatingTextarea2">
+                    Comments
+                  </label>
                 </div>
                 <div className="d-flex justify-content-center py-3">
                   <button className="btn btn-primary btn-lg">Agregar</button>

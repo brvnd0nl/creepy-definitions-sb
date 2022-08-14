@@ -29,7 +29,6 @@ img {
 [class*="contenedor"] {
   max-width: 120rem;
   margin: 0 auto;
-  width: 95%;
 }
 [class*="heading"] {
   font-size: 4rem;
