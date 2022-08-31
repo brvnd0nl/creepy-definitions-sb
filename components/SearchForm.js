@@ -27,7 +27,7 @@ const SearchForm = () => {
                 <h4 className={`h1 ${styles.titulo} py-3`}>Dicctionary</h4>
                 <form className={styles.formulario} onSubmit={handleSubmit}>
                     <input type="text" className={styles.textbox} onChange={(e) => setWord(e.target.value)} placeholder="Escriba aquí"></input>                    
-                    <input type="button" value="Consultar" className={styles.submitButton}></input>             
+                    <input type="submit" value="Consultar" className={styles.submitButton}></input>             
                     <div>
                         
                         {user && (
